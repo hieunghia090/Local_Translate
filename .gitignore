@@ -1,0 +1,25 @@
+.env
+.venv/
+__pycache__/
+Output/
+.pytest_cache/
+*.egg-info/
+backend/build/
+.superpowers/
+# nội dung truyện gốc, không đưa vào repo
+Source/
+大宋有种--35466/
+frontend/node_modules/
+frontend/dist/
+.env.*
+!.env.example
+.claude/
+# script dịch / trích glossary riêng cho từng truyện, không đưa vào repo
+scratch_*.py
+scripts/do_*.py
+scripts/translate_subagent_*.py
+scripts/extract_glossary_song.py
+scripts/generate_glossary.py
+# đặc tả và kế hoạch, chỉ giữ trên máy
+specs/
+docs/

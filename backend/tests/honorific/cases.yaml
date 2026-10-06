@@ -1,0 +1,409 @@
+# layers: lớp bật trong config. protect_src / protect_dst: chuỗi coi như span glossary.
+# segments: dùng cho case nhiều câu (mang cặp xưng hô sang câu sau).
+- id: k01
+  route: ancient
+  layers: [kinship]
+  src: "师姐端着一碗药走了进来。"
+  raw: "Chị bưng một bát thuốc đi vào."
+  expected: "Sư tỷ bưng một bát thuốc đi vào."
+- id: k02
+  route: ancient
+  layers: [kinship]
+  src: "师兄，你也来了？"
+  raw: "Sư anh, anh cũng tới rồi?"
+  expected: "Sư huynh, anh cũng tới rồi?"
+- id: k03
+  route: ancient
+  layers: [kinship]
+  src: "哥哥，我饿了。"
+  raw: "Anh trai, em đói rồi."
+  expected: "Ca ca, em đói rồi."
+- id: k04
+  route: ancient
+  layers: [kinship]
+  src: "大哥说得对。"
+  raw: "Anh cả nói đúng."
+  expected: "Đại ca nói đúng."
+- id: k05
+  route: ancient
+  layers: [kinship]
+  src: "师父，弟子明白了。"
+  raw: "Thầy, đệ tử hiểu rồi."
+  expected: "Sư phụ, đệ tử hiểu rồi."
+- id: k06
+  route: ancient
+  layers: [kinship]
+  src: "母亲一直在等你。"
+  raw: "Mẹ vẫn luôn chờ con."
+  expected: "Mẫu thân vẫn luôn chờ con."
+- id: k07
+  route: ancient
+  layers: [kinship]
+  src: "姐姐和妹妹都来了。"
+  raw: "Chị và em gái đều tới."
+  expected: "Tỷ tỷ và muội muội đều tới."
+- id: k08
+  route: ancient
+  layers: [kinship]
+  src: "嫂子给叔叔倒了一杯茶。"
+  raw: "Chị dâu rót cho chú một chén trà."
+  expected: "Tẩu tử rót cho thúc thúc một chén trà."
+- id: p01
+  route: ancient
+  layers: [pronoun]
+  src: "“你终于醒了。”他说。"
+  raw: "“Anh cuối cùng cũng tỉnh rồi.” Anh ta nói."
+  expected: "“Ngươi cuối cùng cũng tỉnh rồi.” Hắn nói."
+- id: p02
+  route: ancient
+  layers: [pronoun]
+  src: "她笑了笑，没有说话。"
+  raw: "Cô ấy cười cười, không nói gì."
+  expected: "Nàng cười cười, không nói gì."
+- id: p03
+  route: ancient
+  layers: [pronoun]
+  src: "“我们走吧。”"
+  raw: "“Chúng tôi đi thôi.”"
+  expected: "“Chúng ta đi thôi.”"
+- id: p04
+  route: ancient
+  layers: [pronoun]
+  src: "“你们都退下。”"
+  raw: "“Các anh đều lui xuống.”"
+  expected: "“Các ngươi đều lui xuống.”"
+- id: p05
+  route: ancient
+  layers: [pronoun]
+  src: "他们已经走远了。"
+  raw: "Bọn họ đã đi xa rồi."
+  expected: "Bọn hắn đã đi xa rồi."
+- id: p06
+  route: ancient
+  layers: [pronoun]
+  src: "“我不会放过你的！”"
+  raw: "“Tôi sẽ không bỏ qua cho anh đâu!”"
+  expected: "“Ta sẽ không bỏ qua cho ngươi đâu!”"
+- id: p07
+  route: ancient
+  layers: [pronoun]
+  src: "他看着她，心中一动。"
+  raw: "Anh ta nhìn cô ấy, trong lòng khẽ động."
+  expected: "Hắn nhìn nàng, trong lòng khẽ động."
+- id: p08
+  route: ancient
+  layers: [pronoun]
+  src: "“您请坐。”"
+  raw: "“Ông mời ngồi.”"
+  expected: "“Ngài mời ngồi.”"
+- id: p09
+  route: ancient
+  layers: [pronoun]
+  src: "“咱们一起去。”"
+  raw: "“Chúng ta cùng đi.”"
+  expected: "“Chúng ta cùng đi.”"
+- id: e01
+  route: ancient
+  layers: [pronoun]
+  src: "“师尊，我错了。”"
+  raw: "“Sư tôn, tôi sai rồi.”"
+  expected: "“Sư tôn, đệ tử sai rồi.”"
+- id: e02
+  route: ancient
+  layers: [pronoun]
+  src: "“陛下，我已查明。”"
+  raw: "“Bệ hạ, tôi đã tra rõ.”"
+  expected: "“Bệ hạ, thần đã tra rõ.”"
+- id: e03
+  route: ancient
+  layers: [pronoun]
+  src: "“爹，我回来了。”"
+  raw: "“Cha, tôi về rồi.”"
+  expected: "“Cha, con về rồi.”"
+- id: m01
+  route: modern
+  layers: [modern_stable]
+  src: "“妈，我回来了。”"
+  raw: "“Mẹ, tôi về rồi.”"
+  expected: "“Mẹ, con về rồi.”"
+- id: m02
+  route: modern
+  layers: [modern_stable]
+  src: "“爸，你今天怎么这么早？”"
+  raw: "“Bố, anh hôm nay sao sớm thế?”"
+  expected: "“Bố, bố hôm nay sao sớm thế?”"
+- id: m03
+  route: modern
+  layers: [modern_stable]
+  src: "“哥，我没事。”"
+  raw: "“Anh, tôi không sao.”"
+  expected: "“Anh, em không sao.”"
+- id: m04
+  route: modern
+  layers: [modern_stable]
+  src: "“姐，你别担心。”"
+  raw: "“Chị, bạn đừng lo.”"
+  expected: "“Chị, chị đừng lo.”"
+- id: m05
+  route: modern
+  layers: [modern_stable]
+  src: "“老师，我明白了。”"
+  raw: "“Thầy, tôi hiểu rồi.”"
+  expected: "“Thầy, em hiểu rồi.”"
+- id: m06
+  route: modern
+  layers: [modern_stable]
+  src: "“首长，我保证完成任务！”"
+  raw: "“Thủ trưởng, em đảm bảo hoàn thành nhiệm vụ!”"
+  expected: "“Thủ trưởng, tôi đảm bảo hoàn thành nhiệm vụ!”"
+- id: m07
+  route: modern
+  layers: [modern_stable]
+  src: "“同志，你是哪个部队的？”"
+  raw: "“Đồng chí, anh thuộc đơn vị nào?”"
+  expected: "“Đồng chí, đồng chí thuộc đơn vị nào?”"
+- id: m08
+  route: modern
+  layers: [modern_stable]
+  src: "“团长，我们已经到了。”"
+  raw: "“Đoàn trưởng, chúng tôi đã tới rồi.”"
+  expected: "“Đoàn trưởng, chúng tôi đã tới rồi.”"
+- id: m09
+  route: modern
+  layers: [modern_stable]
+  segments:
+    - {src: "“妈，我饿了。”", raw: "“Mẹ, tôi đói rồi.”", expected: "“Mẹ, con đói rồi.”"}
+    - {src: "“我真的很饿。”", raw: "“Tôi thật sự rất đói.”", expected: "“Con thật sự rất đói.”"}
+- id: m10
+  route: modern
+  layers: [modern_stable]
+  segments:
+    - {src: "“妈，我饿了。”", raw: "“Mẹ, tôi đói rồi.”", expected: "“Mẹ, con đói rồi.”"}
+    - {src: "她走进厨房。", raw: "Bà đi vào bếp.", expected: "Bà đi vào bếp."}
+    - {src: "锅里还有饭。", raw: "Trong nồi còn cơm.", expected: "Trong nồi còn cơm."}
+    - {src: "外面下雨了。", raw: "Bên ngoài mưa rồi.", expected: "Bên ngoài mưa rồi."}
+    - {src: "“我走了。”", raw: "“Tôi đi đây.”", expected: "“Tôi đi đây.”"}
+- id: m11
+  route: modern
+  layers: [modern_stable]
+  src: "“妈，老师说我考得很好。”"
+  raw: "“Mẹ, cô giáo nói tôi thi rất tốt.”"
+  expected: "“Mẹ, cô giáo nói tôi thi rất tốt.”"
+  skipped: {conflict: 1}
+- id: m12
+  route: modern
+  layers: [modern_stable]
+  src: "他对妈妈说我很好。"
+  raw: "Anh ta nói với mẹ là tôi rất tốt."
+  expected: "Anh ta nói với mẹ là tôi rất tốt."
+- id: m13
+  route: modern
+  layers: [modern_stable]
+  src: "“爸爸，你看！”"
+  raw: "“Bố ơi, anh xem!”"
+  expected: "“Bố ơi, bố xem!”"
+- id: m14
+  route: modern
+  layers: [modern_stable]
+  src: "“司令，我请求出战！”"
+  raw: "“Tư lệnh, em xin xuất chiến!”"
+  expected: "“Tư lệnh, tôi xin xuất chiến!”"
+- id: m15
+  route: modern
+  layers: [modern_stable]
+  src: "“姐姐，我想你了。”"
+  raw: "“Chị, tớ nhớ cậu rồi.”"
+  expected: "“Chị, em nhớ chị rồi.”"
+- id: x01
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "“师兄，你来了。”他说。"
+  raw: "“Sư anh, anh tới rồi.” Anh ta nói."
+  expected: "“Sư huynh, anh tới rồi.” Anh ta nói."
+- id: x02
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "官家看着童贯，叹了口气。"
+  raw: "Quan gia nhìn Đồng Quán, thở dài."
+  expected: "Quan gia nhìn Đồng Quán, thở dài."
+- id: x03
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "“大哥，坦克已经准备好了。”"
+  raw: "“Anh cả, xe tăng đã chuẩn bị xong.”"
+  expected: "“Đại ca, xe tăng đã chuẩn bị xong.”"
+- id: x04
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "赵楷对弟弟说：“明天出发。”"
+  raw: "Triệu Khải nói với em trai: “Ngày mai xuất phát.”"
+  expected: "Triệu Khải nói với đệ đệ: “Ngày mai xuất phát.”"
+- id: x05
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "“父亲，步枪都运到了。”"
+  raw: "“Bố, súng trường đều chở tới rồi.”"
+  expected: "“Phụ thân, súng trường đều chở tới rồi.”"
+- id: x06
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "她把手枪递给姐姐。"
+  raw: "Cô ấy đưa khẩu súng lục cho chị gái."
+  expected: "Cô ấy đưa khẩu súng lục cho tỷ tỷ."
+- id: x07
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "“妈，我回来了。”"
+  raw: "“Mẹ, tôi về rồi.”"
+  expected: "“Mẹ, tôi về rồi.”"
+- id: x08
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "叔叔，你的炮兵呢？"
+  raw: "Chú, pháo binh của anh đâu?"
+  expected: "Thúc thúc, pháo binh của anh đâu?"
+- id: x09
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "师父说他要出门。"
+  raw: "Thầy nói anh ta phải ra ngoài."
+  expected: "Sư phụ nói anh ta phải ra ngoài."
+- id: x10
+  route: mixed
+  layers: [kinship, pronoun, modern_stable]
+  src: "嫂子拿着手机。"
+  raw: "Chị dâu cầm điện thoại."
+  expected: "Tẩu tử cầm điện thoại."
+- id: n01
+  route: ancient
+  layers: [pronoun]
+  src: "他看见他走过来。"
+  raw: "Anh ta thấy người kia đi tới."
+  expected: "Anh ta thấy người kia đi tới."
+  skipped: {count_mismatch: 1}
+- id: n02
+  route: ancient
+  layers: [kinship]
+  src: "师兄和师兄都来了。"
+  raw: "Hai anh đều tới."
+  expected: "Hai anh đều tới."
+  skipped: {count_mismatch: 1}
+- id: n03
+  route: ancient
+  layers: [kinship]
+  src: "师姐来了。"
+  raw: "Sư tỷ Tô tới rồi."
+  expected: "Sư tỷ Tô tới rồi."
+  protect_src: [师姐]
+  protect_dst: [Sư tỷ Tô]
+- id: n04
+  route: ancient
+  layers: [pronoun]
+  src: "你若不来，便是死路一条。"
+  raw: "Anh nếu không đến, chính là đường chết."
+  expected: "Anh nếu không đến, chính là đường chết."
+- id: n05
+  route: ancient
+  layers: [pronoun]
+  src: "“您放心，我一定办到。”"
+  raw: "“Ông yên tâm, tôi nhất định làm được.”"
+  expected: "“Ngài yên tâm, tôi nhất định làm được.”"
+  skipped: {respect: 1}
+- id: n06
+  route: ancient
+  layers: [pronoun]
+  src: "“你走。”“你快走。”"
+  raw: "“Anh đi, anh đi mau.”"
+  expected: "“Anh đi, anh đi mau.”"
+  skipped: {dialogue_mismatch: 1}
+- id: n07
+  route: unknown
+  layers: [kinship, pronoun, modern_stable]
+  src: "他来了。"
+  raw: "Anh ta tới rồi."
+  expected: "Anh ta tới rồi."
+- id: n08
+  route: ancient
+  layers: [kinship]
+  src: "他来了。"
+  raw: "Anh ta tới rồi."
+  expected: "Anh ta tới rồi."
+- id: n09
+  route: modern
+  layers: [pronoun]
+  src: "他来了。"
+  raw: "Anh ta tới rồi."
+  expected: "Anh ta tới rồi."
+- id: n10
+  route: ancient
+  layers: [kinship]
+  src: "那个姑娘很美。"
+  raw: "Cô nương kia rất đẹp."
+  expected: "Cô nương kia rất đẹp."
+- id: n11
+  route: ancient
+  layers: [kinship]
+  src: "师姐来了。"
+  raw: "Sư tỷ tới rồi."
+  expected: "Sư tỷ tới rồi."
+- id: n12
+  route: ancient
+  layers: [kinship]
+  src: "哥哥来了。"
+  raw: "Khanh tới rồi."
+  expected: "Khanh tới rồi."
+  skipped: {count_mismatch: 1}
+- id: n13
+  route: ancient
+  layers: [pronoun]
+  src: "“前辈，我只是路过。”"
+  raw: "“Tiền bối, tôi chỉ đi ngang qua.”"
+  expected: "“Tiền bối, tôi chỉ đi ngang qua.”"
+  skipped: {respect: 1}
+- id: n14
+  route: modern
+  layers: [modern_stable]
+  src: "“妈，我和我弟弟回来了。”"
+  raw: "“Mẹ, con và em trai về rồi.”"
+  expected: "“Mẹ, con và em trai về rồi.”"
+  skipped: {count_mismatch: 1}
+- id: n15
+  route: ancient
+  layers: [pronoun]
+  src: "她和她妹妹来了。"
+  raw: "Cô ấy và em gái tới rồi."
+  expected: "Cô ấy và em gái tới rồi."
+  skipped: {count_mismatch: 1}
+- id: n16
+  route: ancient
+  layers: [pronoun]
+  src: "他来了。"
+  raw: "Anh ta tới, anh ấy cười."
+  expected: "Anh ta tới, anh ấy cười."
+  skipped: {count_mismatch: 1}
+- id: n17
+  route: ancient
+  layers: [pronoun]
+  src: "“您和你。”"
+  raw: "“Ông và anh.”"
+  expected: "“Ngài và anh.”"
+- id: n18
+  route: ancient
+  layers: [pronoun]
+  src: "“姑娘，我来帮你。”"
+  raw: "“Cô nương, tôi tới giúp cô.”"
+  expected: "“Cô nương, ta tới giúp cô.”"  # “Cô” của “Cô nương” cũng khớp dạng của 你: 2 ≠ 1, bỏ qua (an toàn)
+  skipped: {count_mismatch: 1}
+- id: n19
+  route: modern
+  layers: [modern_stable]
+  src: "“小姐，我来了。”"
+  raw: "“Tiểu thư, tôi tới rồi.”"
+  expected: "“Tiểu thư, tôi tới rồi.”"
+- id: n20
+  route: ancient
+  layers: [pronoun]
+  src: "其他人都走了。"
+  raw: "Những người khác đều đi rồi."
+  expected: "Những người khác đều đi rồi."
+  skipped: {count_mismatch: 0}

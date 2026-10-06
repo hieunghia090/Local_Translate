@@ -1,0 +1,1 @@
+CREATE DATABASE local_translate_test OWNER local_translate;

@@ -1,0 +1,24 @@
+# Thân tộc / sư môn. target: dạng Hán Việt mong muốn. forms: các dạng HachimiMT hay ra (sẽ bị thay).
+# blockers: từ chứa chữ thân tộc nhưng KHÔNG phải nghĩa thân tộc (đếm như một token riêng, không xử lý).
+terms:
+  师兄: {target: sư huynh, forms: [sư anh, đàn anh, anh]}
+  师姐: {target: sư tỷ, forms: [sư chị, đàn chị, chị]}
+  师弟: {target: sư đệ, forms: [đàn em, em]}
+  师妹: {target: sư muội, forms: [em gái, đàn em, em]}
+  师父: {target: sư phụ, forms: [thầy]}
+  师傅: {target: sư phụ, forms: [thầy]}
+  师尊: {target: sư tôn, forms: [sư phụ, thầy]}
+  大哥: {target: đại ca, forms: [anh cả, anh hai]}
+  哥哥: {target: ca ca, forms: [anh trai, anh]}
+  哥: {target: ca, forms: [anh trai, anh]}
+  姐姐: {target: tỷ tỷ, forms: [chị gái, chị]}
+  姐: {target: tỷ, forms: [chị gái, chị]}
+  妹妹: {target: muội muội, forms: [em gái]}
+  弟弟: {target: đệ đệ, forms: [em trai]}
+  父亲: {target: phụ thân, forms: [bố, ba, cha]}
+  爹: {target: cha, forms: [bố, ba]}
+  母亲: {target: mẫu thân, forms: [mẹ, má]}
+  娘: {target: nương, forms: [mẹ, má]}
+  嫂子: {target: tẩu tử, forms: [chị dâu]}
+  叔叔: {target: thúc thúc, forms: [chú]}
+blockers: [姑娘, 娘娘, 新娘, 娘子, 小姐, 哥们, 大姐大]
