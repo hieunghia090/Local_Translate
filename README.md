@@ -6,7 +6,7 @@ Web app chạy trên máy của bạn để dịch truyện mạng tiếng Trung
 - Quản lý nhiều truyện, hàng đợi dịch, sửa từng câu, glossary tên riêng, chuẩn hoá xưng hô.
 - Xuất bản dịch ra `.txt`, `.zip`, `.epub` hoặc song ngữ.
 - Tuỳ chọn: dịch và soát bằng DeepSeek nếu bạn có API key, kèm ước tính và theo dõi chi phí.
-- Tuỳ chọn: AI trích glossary từ chương và bảng âm Hán Việt (xem mục G9 bên dưới).
+- Tuỳ chọn: AI trích glossary từ chương và bảng âm Hán Việt (xem mục [AI trích glossary và bảng âm Hán Việt](#ai-trích-glossary-và-bảng-âm-hán-việt)).
 
 Dữ liệu nằm trên máy bạn: PostgreSQL chạy trong Docker, file nằm trong thư mục `~/LocalTranslate`.
 
@@ -103,7 +103,7 @@ Bấm **Tạo workspace**. Bản gốc mỗi chương được lưu thành `book
   - Thêm, sửa hoặc tắt thuật ngữ (tên người, địa danh, cảnh giới…). Tìm, lọc theo loại, sắp xếp.
   - Nhập hoặc xuất `.tsv` / `.json`; khi trùng thuật ngữ, app hỏi lại trước khi ghi đè.
   - Sao glossary từ truyện khác (bỏ qua term đã có).
-  - Trích glossary bằng AI và bảng âm Hán Việt: xem mục G9 bên dưới.
+  - Trích glossary bằng AI và bảng âm Hán Việt: xem mục [AI trích glossary và bảng âm Hán Việt](#ai-trích-glossary-và-bảng-âm-hán-việt).
   - Khi dịch, thuật ngữ được thay bằng tên giả để model giữ nguyên, rồi khôi phục. Câu bị mất thuật ngữ được dịch lại; nếu vẫn hỏng thì chương chuyển sang "Cần soát".
 - **Hàng đợi dịch**
   - Xem chương đang dịch và chương đang chờ.
@@ -240,16 +240,14 @@ Bản dịch, glossary, lịch sử sửa và log nằm trong PostgreSQL (volume
 make dev        # API tự nạp lại + worker + Vite ở http://127.0.0.1:5173
 make test       # test backend nhanh (không cần DB, không nạp model)
 make test-db    # test cần Postgres (DB local_translate_test)
-make test-slow  # test nạp HachimiMT thật (NFR-1)
+make test-slow  # test nạp HachimiMT thật, đo tốc độ dịch
 make test-live  # test gọi DeepSeek thật 1 chương, tốn tiền; chỉ chạy khi LT_LIVE=1 (make đã đặt sẵn)
 make fe-test    # vitest
-make e2e        # Playwright, server riêng ở cổng 8765, seed 50 truyện để đo NFR-2
+make e2e        # Playwright, server riêng ở cổng 8765, seed 50 truyện để đo tốc độ giao diện
 make seed-perf  # tạo 50 truyện / 2.000 chương để thử hiệu năng; từ chối nếu DATABASE_URL không phải DB test (muốn ghi vào DB thật: `make seed-perf ARGS=--yes-main-db`)
 ```
 
-- Đặc tả: `specs/00-overview.md` → `specs/08-ai-translation.md` (đã làm). `specs/09-staged-name-scan.md` (G11, quét tên theo giai đoạn) đang là bản nháp, chưa có trong app; kế hoạch ở `docs/superpowers/plans/2026-10-05-g11-staged-name-scan.md`.
-- Kế hoạch từng giai đoạn: `docs/superpowers/plans/`.
-- API nằm dưới `/api/v1`. Xem danh sách đầy đủ ở mục API của từng spec, hoặc tại http://127.0.0.1:8000/docs khi app đang chạy.
+- API nằm dưới `/api/v1`. Xem danh sách đầy đủ tại http://127.0.0.1:8000/docs khi app đang chạy.
 - `make test` và `make test-db` dùng DeepSeek giả, không bao giờ gọi API thật.
 - Không chạy `make test-db` cùng lúc với `make e2e`, vì cả hai dùng chung DB test.
 
@@ -270,7 +268,7 @@ Công cụ phát triển khác (chạy trong `backend/`):
 
 Script cũ `translate_novel.py` (dịch cả thư mục `Source/` ra `Output/`) vẫn còn trong repo. Chạy `python3 translate_novel.py --help` để xem tham số.
 
-## G9: AI trích glossary và bảng âm Hán Việt
+## AI trích glossary và bảng âm Hán Việt
 
 - `make hanviet` dựng `data/hanviet_seed.tsv`: lấy 8.105 chữ thông dụng (trường `kTGH` của Unihan) cùng chữ phồn thể, hỏi DeepSeek (`deepseek-flash`) theo lô 400 chữ, đối chiếu `kVietnamese` của Unihan (âm có ở cả hai nguồn là `confirmed`; âm chỉ có ở Unihan bị bỏ vì có thể là âm Nôm). `Unihan.zip` tải một lần vào `~/LocalTranslate/cache/`. File seed đã commit; API nạp vào DB khi khởi động, theo dấu sha256 của file lưu trong `app_meta` (seed đổi thì nạp lại).
 - Chữ chưa có âm được bổ sung nền sau khi tạo truyện, thêm chương hoặc thêm term, và chỉ chạy khi đã nạp seed (`HANVIET_AUTOFILL=false` để tắt). Mỗi lượt hỏi tối đa 300 chữ, phần còn lại để lượt sau. Term đã duyệt dạy thêm âm cho chữ chưa có âm nào (`source = learned`).
